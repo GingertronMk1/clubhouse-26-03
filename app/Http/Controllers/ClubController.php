@@ -14,7 +14,7 @@ class ClubController extends Controller
     public function index()
     {
         return inertia('Club/Index', [
-            'clubs' => Club::query()->paginate(10),
+            'clubs' => Club::query()->with('users')->paginate(10),
         ]);
     }
 

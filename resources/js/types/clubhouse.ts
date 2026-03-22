@@ -1,3 +1,5 @@
+import { User } from '@/types/auth';
+
 export type Paginated<T> = {
     current_page: number;
     data: T[];
@@ -24,4 +26,5 @@ export type Club = {
     id: string;
     name: string;
     description?: string;
+    users: User[];
 }

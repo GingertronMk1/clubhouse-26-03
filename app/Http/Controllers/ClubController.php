@@ -13,9 +13,10 @@ class ClubController extends Controller
      */
     public function index()
     {
-        $clubs = request()->user()->isAdmin()
-            ? Club::all()
-            : request()->user()->clubs();
+        $user = request()->user();
+        $clubs = $user->isAdmin()
+            ? Club::query()
+            : $user->clubs();
 
         return inertia('Club/Index', [
             'clubs' => $clubs->with('users')->paginate(10),

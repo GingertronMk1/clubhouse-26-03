@@ -13,7 +13,7 @@ defineProps<{ clubs: Paginated<Club> }>();
         <div class="flex flex-col space-y-2">
             <div v-for="club in clubs.data" :key="club.id" class="text-white flex flex-col space-y-2">
                 <h3 class="flex flex-row justify-between">
-                    <span class="text-xl" v-text="`${club.name}${club.userIsAdmin ? ' (Admin)' : ''}`" />
+                    <span class="text-xl" v-text="`${club.name}${club.user_is_admin ? ' (Admin)' : ''}`" />
                     <Link :href="show(club.id)">Show</Link>
                 </h3>
                 <p v-if="club.description" v-text="club.description" />

@@ -29,7 +29,7 @@ export type Club = {
     name: string;
     description?: string;
     users: User[];
-    userIsAdmin: boolean;
+    user_is_admin: boolean;
     pivot?: {
         type: string;
     }

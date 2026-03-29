@@ -15,13 +15,13 @@ const handleLogout = () => {
         <ul class="flex flex-col">
             <Link :href="index()"> Clubs </Link>
         </ul>
-        <div class="mt-auto">
+        <div v-if="$page.props.auth.user" class="mt-auto">
             <Link
                 class="w-full cursor-pointer"
                 :href="logout()"
                 @click="handleLogout"
             >
-                Log out
+                Log out {{ $page.props.auth.user.name }}
             </Link>
         </div>
     </aside>

@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->type === 'admin';
+        return $this->type === UserTypeEnum::TYPE_ADMIN;
     }
 }

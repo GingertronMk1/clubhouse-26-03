@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\UserTypeEnum;
 use Database\Factories\ClubFactory;
 use Illuminate\Database\Eloquent\Attributes\Appends;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['name', 'description'])]
-#[Appends(['userIsAdmin'])]
+#[Appends(['user_is_admin'])]
 class Club extends Model
 {
     /** @use HasFactory<ClubFactory> */
@@ -41,13 +42,13 @@ class Club extends Model
 
     public function admins(): BelongsToMany
     {
-        return $this->users()->wherePivot('type', 'admin');
+        return $this->users()->wherePivot('type', UserTypeEnum::TYPE_ADMIN);
     }
 
-    protected function getUserIsAdminAttribute(): Attribute
+    protected function userIsAdmin(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->admins()->where('user_id', auth()->id())->exists(),
+            get: fn () => $this->admins->contains(auth()->user()),
         );
     }
 }

@@ -34,3 +34,10 @@ export type Club = {
         type: string;
     }
 }
+
+export type Sport = {
+    id: string;
+    name: string;
+    description?: string;
+    scoring: Record<string, number>;
+}

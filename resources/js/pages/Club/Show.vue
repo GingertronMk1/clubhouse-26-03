@@ -1,11 +1,26 @@
 <script setup lang="ts">
-import type { Club } from '@/types';
+import { ref } from 'vue';
+import ClubhouseLayout from '@/layouts/ClubhouseLayout.vue';
+import type { Club, User, WithPivot } from '@/types';
 
-defineProps<{ club: Club }>();
+const props = defineProps<{ club: Club }>();
+
+const clubUsers = ref<WithPivot<User>[]>(props.club.users as WithPivot<User>[]);
 </script>
 
 <template>
-    <h3 v-text="club.name" />
+    <ClubhouseLayout :title="club.name">
+        <h3 v-text="club.name" />
+        <p v-text="club.description" />
+        <ul class="flex flex-col">
+            <li v-for="user in clubUsers" :key="user.id">
+                <span class="flex flex-row space-x-2">
+                    <span v-text="user.name" />
+                    <span class="uppercase" v-text="user.pivot.type" />
+                </span>
+            </li>
+        </ul>
+    </ClubhouseLayout>
 </template>
 
 <style scoped></style>

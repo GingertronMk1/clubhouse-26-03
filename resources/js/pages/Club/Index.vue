@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import Layout from '@/layouts/ClubhouseLayout.vue';
+import ClubhouseLayout from '@/layouts/ClubhouseLayout.vue';
 import { show } from '@/routes/club';
 import type { Club, Paginated } from '@/types';
 
@@ -8,7 +8,7 @@ defineProps<{ clubs: Paginated<Club> }>();
 </script>
 
 <template>
-    <Layout title="Clubs">
+    <ClubhouseLayout title="Clubs">
         <Head title="Clubs" />
         <div class="flex flex-col space-y-2">
             <div class="text-white flex flex-col space-y-2" v-for="club in clubs.data" :key="club.id">
@@ -20,5 +20,5 @@ defineProps<{ clubs: Paginated<Club> }>();
                 <p v-text="club.users.length + ' member' + (club.users.length === 1 ? '' : 's')" />
             </div>
         </div>
-    </Layout>
+    </ClubhouseLayout>
 </template>

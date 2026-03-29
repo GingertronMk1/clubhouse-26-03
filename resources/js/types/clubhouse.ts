@@ -1,4 +1,6 @@
-import { User } from '@/types/auth';
+import type { User } from '@/types/auth';
+
+export type WithPivot<T> = T & { pivot: Record<string, unknown> };
 
 export type Paginated<T> = {
     current_page: number;

@@ -13,8 +13,12 @@ class ClubController extends Controller
      */
     public function index()
     {
+        $clubs = request()->user()->isAdmin()
+            ? Club::all()
+            : request()->user()->clubs();
+
         return inertia('Club/Index', [
-            'clubs' => Club::query()->with('users')->paginate(10),
+            'clubs' => $clubs->with('users')->paginate(10),
         ]);
     }
 
@@ -39,7 +43,7 @@ class ClubController extends Controller
      */
     public function show(Club $club)
     {
-        //
+        return inertia('Club/Show', ['club' => $club->load('users')]);
     }
 
     /**

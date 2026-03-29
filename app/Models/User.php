@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\UserTypeEnum;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -36,11 +37,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'type' => UserTypeEnum::class,
         ];
     }
 
     public function clubs(): BelongsToMany
     {
-        return $this->belongsToMany(Club::class);
+        return $this->belongsToMany(Club::class)->withPivot('type');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->type === 'admin';
     }
 }

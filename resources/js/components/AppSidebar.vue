@@ -15,6 +15,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index } from '@/routes/club';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -23,6 +24,11 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Clubs',
+        href: index(),
+        icon: LayoutGrid,
+    }
 ];
 
 const footerNavItems: NavItem[] = [

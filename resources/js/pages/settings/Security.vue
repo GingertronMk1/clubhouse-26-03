@@ -57,6 +57,7 @@ onUnmounted(() => clearTwoFactorAuthData());
                 />
 
                 <Form
+                    v-slot="{ errors, processing, recentlySuccessful }"
                     v-bind="SecurityController.update.form()"
                     :options="{
                         preserveScroll: true,
@@ -68,7 +69,6 @@ onUnmounted(() => clearTwoFactorAuthData());
                         'current_password',
                     ]"
                     class="space-y-6"
-                    v-slot="{ errors, processing, recentlySuccessful }"
                 >
                     <div class="grid gap-2">
                         <Label for="current_password">Current password</Label>
@@ -160,9 +160,9 @@ onUnmounted(() => clearTwoFactorAuthData());
                         </Button>
                         <Form
                             v-else
+                            v-slot="{ processing }"
                             v-bind="enable.form()"
                             @success="showSetupModal = true"
-                            #default="{ processing }"
                         >
                             <Button type="submit" :disabled="processing">
                                 Enable 2FA
@@ -182,7 +182,7 @@ onUnmounted(() => clearTwoFactorAuthData());
                     </p>
 
                     <div class="relative inline">
-                        <Form v-bind="disable.form()" #default="{ processing }">
+                        <Form v-slot="{ processing }" v-bind="disable.form()">
                             <Button
                                 variant="destructive"
                                 type="submit"
@@ -197,9 +197,9 @@ onUnmounted(() => clearTwoFactorAuthData());
                 </div>
 
                 <TwoFactorSetupModal
-                    v-model:isOpen="showSetupModal"
-                    :requiresConfirmation="requiresConfirmation"
-                    :twoFactorEnabled="twoFactorEnabled"
+                    v-model:is-open="showSetupModal"
+                    :requires-confirmation="requiresConfirmation"
+                    :two-factor-enabled="twoFactorEnabled"
                 />
             </div>
         </SettingsLayout>

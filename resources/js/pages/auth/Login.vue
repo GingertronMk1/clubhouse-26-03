@@ -35,9 +35,9 @@ defineProps<{
         </div>
 
         <Form
+            v-slot="{ errors, processing }"
             v-bind="store.form()"
             :reset-on-success="['password']"
-            v-slot="{ errors, processing }"
             class="flex flex-col gap-6"
         >
             <div class="grid gap-6">
@@ -99,8 +99,8 @@ defineProps<{
             </div>
 
             <div
-                class="text-center text-sm text-muted-foreground"
                 v-if="canRegister"
+                class="text-center text-sm text-muted-foreground"
             >
                 Don't have an account?
                 <TextLink :href="register()" :tabindex="5">Sign up</TextLink>

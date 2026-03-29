@@ -28,9 +28,9 @@ defineProps<{
         </div>
 
         <Form
+            v-slot="{ processing }"
             v-bind="send.form()"
             class="space-y-6 text-center"
-            v-slot="{ processing }"
         >
             <Button :disabled="processing" variant="secondary">
                 <Spinner v-if="processing" />

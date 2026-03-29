@@ -47,9 +47,9 @@ const user = computed(() => page.props.auth.user);
                 />
 
                 <Form
+                    v-slot="{ errors, processing, recentlySuccessful }"
                     v-bind="ProfileController.update.form()"
                     class="space-y-6"
-                    v-slot="{ errors, processing, recentlySuccessful }"
                 >
                     <div class="grid gap-2">
                         <Label for="name">Name</Label>

@@ -98,6 +98,7 @@ watch(
     async (isOpen) => {
         if (!isOpen) {
             resetModalState();
+
             return;
         }
 
@@ -170,7 +171,6 @@ watch(
                                     class="relative z-10 overflow-hidden border p-5"
                                 >
                                     <div
-                                        v-html="qrCodeSvg"
                                         class="flex aspect-square size-full items-center justify-center"
                                         :style="{
                                             filter:
@@ -178,6 +178,7 @@ watch(
                                                     ? 'invert(1) brightness(1.5)'
                                                     : undefined,
                                         }"
+                                        v-html="qrCodeSvg"
                                     />
                                 </div>
                             </div>
@@ -220,8 +221,8 @@ watch(
                                         class="h-full w-full bg-background p-3 text-foreground"
                                     />
                                     <button
-                                        @click="copy(manualSetupKey || '')"
                                         class="relative block h-auto border-l border-border px-3 hover:bg-muted"
+                                        @click="copy(manualSetupKey || '')"
                                     >
                                         <Check
                                             v-if="copied"
@@ -237,12 +238,12 @@ watch(
 
                 <template v-else>
                     <Form
+                        v-slot="{ errors, processing }"
                         v-bind="confirm.form()"
                         error-bag="confirmTwoFactorAuthentication"
                         reset-on-error
                         @finish="code = ''"
                         @success="isOpen = false"
-                        v-slot="{ errors, processing }"
                     >
                         <input type="hidden" name="code" :value="code" />
                         <div
@@ -274,8 +275,8 @@ watch(
                                     type="button"
                                     variant="outline"
                                     class="w-auto flex-1"
-                                    @click="showVerificationStep = false"
                                     :disabled="processing"
+                                    @click="showVerificationStep = false"
                                 >
                                     Back
                                 </Button>

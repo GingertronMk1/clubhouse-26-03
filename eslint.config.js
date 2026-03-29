@@ -61,6 +61,7 @@ export default defineConfigWithVueTs(
                 'error',
                 'prefer-top-level',
             ],
+            'vue/no-empty-component-block': 'error',
         },
     },
     {

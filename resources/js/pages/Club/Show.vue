@@ -28,4 +28,4 @@ const clubUsers = ref<WithPivot<User>[]>(props.club.users as WithPivot<User>[]);
     </ClubhouseLayout>
 </template>
 
-<style scoped></style>
+

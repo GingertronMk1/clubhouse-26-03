@@ -27,4 +27,4 @@ const handleLogout = () => {
     </aside>
 </template>
 
-<style scoped></style>
+

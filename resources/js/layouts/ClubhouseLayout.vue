@@ -15,4 +15,4 @@ defineProps<{ title?: string }>();
     </div>
 </template>
 
-<style scoped></style>
+

@@ -50,7 +50,14 @@ export default defineConfigWithVueTs(
             'import/order': [
                 'error',
                 {
-                    groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+                    groups: [
+                        'builtin',
+                        'external',
+                        'internal',
+                        'parent',
+                        'sibling',
+                        'index',
+                    ],
                     alphabetize: {
                         order: 'asc',
                         caseInsensitive: true,
@@ -62,6 +69,17 @@ export default defineConfigWithVueTs(
                 'prefer-top-level',
             ],
             'vue/no-empty-component-block': 'error',
+            'vue/max-attributes-per-line': [
+                'error',
+                {
+                    singleline: {
+                        max: 1,
+                    },
+                    multiline: {
+                        max: 1,
+                    },
+                },
+            ],
         },
     },
     {
@@ -96,7 +114,11 @@ export default defineConfigWithVueTs(
         },
         rules: {
             curly: ['error', 'all'],
-            '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: false }],
+            '@stylistic/brace-style': [
+                'error',
+                '1tbs',
+                { allowSingleLine: false },
+            ],
         },
     },
 );

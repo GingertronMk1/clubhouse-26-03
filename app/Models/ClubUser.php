@@ -14,6 +14,7 @@ class ClubUser extends Pivot
             'type' => UserTypeEnum::class,
         ];
     }
+
     public function club(): BelongsTo
     {
         return $this->belongsTo(Club::class);

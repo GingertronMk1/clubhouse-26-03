@@ -117,8 +117,8 @@ const rightNavItems: NavItem[] = [
                                         "
                                     >
                                         <component
-                                            v-if="item.icon"
                                             :is="item.icon"
+                                            v-if="item.icon"
                                             class="h-5 w-5"
                                         />
                                         {{ item.title }}
@@ -134,8 +134,8 @@ const rightNavItems: NavItem[] = [
                                         class="flex items-center space-x-2 text-sm font-medium"
                                     >
                                         <component
-                                            v-if="item.icon"
                                             :is="item.icon"
+                                            v-if="item.icon"
                                             class="h-5 w-5"
                                         />
                                         <span>{{ item.title }}</span>
@@ -173,8 +173,8 @@ const rightNavItems: NavItem[] = [
                                     :href="item.href"
                                 >
                                     <component
-                                        v-if="item.icon"
                                         :is="item.icon"
+                                        v-if="item.icon"
                                         class="mr-2 h-4 w-4"
                                     />
                                     {{ item.title }}
@@ -276,7 +276,7 @@ const rightNavItems: NavItem[] = [
             <div
                 class="mx-auto flex h-12 w-full items-center justify-start px-4 text-neutral-500 md:max-w-7xl"
             >
-                <Breadcrumbs :breadcrumbs="breadcrumbs" />
+                <Breadcrumbs v-if="breadcrumbs" :breadcrumbs="breadcrumbs" />
             </div>
         </div>
     </div>

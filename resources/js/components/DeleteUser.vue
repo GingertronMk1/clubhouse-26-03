@@ -45,14 +45,14 @@ const passwordInput = useTemplateRef('passwordInput');
                 </DialogTrigger>
                 <DialogContent>
                     <Form
+                        v-slot="{ errors, processing, reset, clearErrors }"
                         v-bind="ProfileController.destroy.form()"
                         reset-on-success
-                        @error="() => passwordInput?.focus()"
                         :options="{
                             preserveScroll: true,
                         }"
                         class="space-y-6"
-                        v-slot="{ errors, processing, reset, clearErrors }"
+                        @error="() => passwordInput?.focus()"
                     >
                         <DialogHeader class="space-y-3">
                             <DialogTitle
@@ -74,8 +74,8 @@ const passwordInput = useTemplateRef('passwordInput');
                             >
                             <PasswordInput
                                 id="password"
-                                name="password"
                                 ref="passwordInput"
+                                name="password"
                                 placeholder="Password"
                             />
                             <InputError :message="errors.password" />

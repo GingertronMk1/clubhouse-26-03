@@ -9,7 +9,7 @@ defineProps<{ title?: string }>();
                 <h1 class="text-2xl" v-text="title ?? 'Clubhouse'" />
             </div>
         </header>
-        <main class="w-full overflow-y-scroll p-2">
+        <main class="w-full overflow-y-scroll p-4">
             <slot />
         </main>
     </div>

@@ -48,7 +48,7 @@ class Club extends Model
     protected function userIsAdmin(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->admins->contains(auth()->user()),
+            get: fn () => $this->load('admins')->admins->contains(auth()->user()),
         );
     }
 }

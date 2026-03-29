@@ -10,11 +10,11 @@ defineProps<{ clubs: Paginated<Club> }>();
 <template>
     <ClubhouseLayout title="Clubs">
         <Head title="Clubs" />
-        <div class="flex flex-col space-y-2">
-            <div v-for="club in clubs.data" :key="club.id" class="text-white flex flex-col space-y-2">
-                <h3 class="flex flex-row justify-between">
+        <div class="flex flex-col divide-y-2 border-gray-700">
+            <div v-for="club in clubs.data" :key="club.id" class="text-white flex flex-col space-y-2 py-2">
+                <h3 class="flex flex-row justify-between items-center">
                     <span class="text-xl" v-text="`${club.name}${club.user_is_admin ? ' (Admin)' : ''}`" />
-                    <Link :href="show(club.id)">Show</Link>
+                    <Link :href="show(club.id)" class="bg-gray-700 hover:bg-gray-800 py-1 px-2 rounded-sm">Show</Link>
                 </h3>
                 <p v-if="club.description" v-text="club.description" />
                 <p v-text="club.users.length + ' member' + (club.users.length === 1 ? '' : 's')" />

@@ -17,7 +17,7 @@ const clubUsers = ref<WithPivot<User>[]>(props.club.users as WithPivot<User>[]);
 
             <h5 class="text-lg">Members</h5>
             <ul class="flex flex-col">
-                <li v-for="user in clubUsers" :key="user.id">
+                <li v-for="user in clubUsers" :key="user.id" class="space-y-2">
                     <span class="flex flex-row space-x-2">
                         <span v-text="user.name" />
                         <span class="uppercase" v-text="user.pivot.type" />

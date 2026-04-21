@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'type' => UserTypeEnum::TYPE_ADMIN->value,
         ]);
 
-        $this->call(ClubSeeder::class);
+        $this->call([ClubSeeder::class, SportSeeder::class]);
 
         $this->command->info('Adding users for clubs');
 

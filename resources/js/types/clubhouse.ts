@@ -20,7 +20,7 @@ export type Paginated<T> = {
         label: string;
         page: string|null;
         active: boolean;
-    };
+    }[];
 };
 
 
@@ -33,4 +33,11 @@ export type Club = {
     pivot?: {
         type: string;
     }
+}
+
+export type Sport = {
+    id: string;
+    name: string;
+    description?: string;
+    scoring: Record<string, number>;
 }

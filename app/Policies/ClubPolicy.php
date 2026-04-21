@@ -32,7 +32,7 @@ class ClubPolicy
      */
     public function view(User $user, Club $club): bool
     {
-        return $this->viewAny($user) || $club->users->includes($user);
+        return $this->viewAny($user) || $club->users->contains($user);
     }
 
     /**
@@ -48,7 +48,7 @@ class ClubPolicy
      */
     public function update(User $user, Club $club): bool
     {
-        return $club->admins->includes($user);
+        return $club->load('admins')->admins->contains($user);
     }
 
     /**
@@ -56,7 +56,7 @@ class ClubPolicy
      */
     public function delete(User $user, Club $club): bool
     {
-        return $club->admins->includes($user);
+        return $club->admins->contains($user);
     }
 
     /**
@@ -64,7 +64,7 @@ class ClubPolicy
      */
     public function restore(User $user, Club $club): bool
     {
-        return $club->admins->includes($user);
+        return $club->admins->contains($user);
     }
 
     /**
@@ -72,6 +72,6 @@ class ClubPolicy
      */
     public function forceDelete(User $user, Club $club): bool
     {
-        return false;
+        return $club->admins->contains($user);
     }
 }

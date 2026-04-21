@@ -3,11 +3,12 @@ import { Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import type { Paginated } from '@/types';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     pagination: Paginated<any>;
-}>();
-
-const numberOfLinksEitherSide = 2;
+    linksEitherSide?: number;
+}>(), {
+    linksEitherSide: 2,
+});
 
 const activeLinksEitherSide = computed(function () {
     const links = props.pagination.links.filter((link) =>
@@ -16,8 +17,8 @@ const activeLinksEitherSide = computed(function () {
     const activeIndex = links.findIndex((link) => link.active);
 
     return links.filter((_, index) =>
-        activeIndex - numberOfLinksEitherSide <= index
-        && index <= activeIndex + numberOfLinksEitherSide
+        activeIndex - props.linksEitherSide <= index
+        && index <= activeIndex + props.linksEitherSide
     );
 });
 </script>
@@ -33,8 +34,9 @@ const activeLinksEitherSide = computed(function () {
                 v-if="link.url"
                 :href="link.url"
                 :class="{ 'font-bold': link.active }"
-                >{{ link.label }}</Link
-            >
+                >
+                {{ link.label }}
+            </Link>
         </template>
 
         <Link v-if="pagination.next_page_url" :href="pagination.next_page_url">

@@ -12,13 +12,14 @@ class ClubSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach($this->getClubs() as $name)
+        foreach ($this->getClubs() as $name) {
             Club::query()->updateOrCreate(
                 [
                     'name' => $name,
                     'description' => $name,
                 ],
             );
+        }
     }
 
     private function getClubs(): array

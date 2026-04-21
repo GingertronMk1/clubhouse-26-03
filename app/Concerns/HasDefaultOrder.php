@@ -16,7 +16,6 @@ trait HasDefaultOrder
 
     /**
      * @return string[] An array of two strings; the first the column by which to order, the second the direction.
-     *
      */
     protected static function getDefaultOrder(): array
     {

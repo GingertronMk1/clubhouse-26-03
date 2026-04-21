@@ -2,8 +2,8 @@
 import { Link, router } from '@inertiajs/vue3';
 import { logout } from '@/routes';
 import { index as clubIndex } from '@/routes/club';
-import type { RouteDefinition } from '@/wayfinder';
 import { index as sportIndex } from '@/routes/sport';
+import type { RouteDefinition } from '@/wayfinder';
 
 const handleLogout = () => {
     router.flushAll();

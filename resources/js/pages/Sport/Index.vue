@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import ClubhouseLayout from '@/layouts/ClubhouseLayout.vue';
-import type { Paginated, Sport } from '@/types';
 import { show } from '@/routes/sport';
+import type { Paginated, Sport } from '@/types';
 
 defineProps<{ sports: Paginated<Sport> }>();
 </script>

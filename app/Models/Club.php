@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\HasDefaultOrder;
 use App\UserTypeEnum;
 use Database\Factories\ClubFactory;
 use Illuminate\Database\Eloquent\Attributes\Appends;
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 #[Appends(['user_is_admin'])]
 class Club extends Model
 {
+    use HasDefaultOrder;
+
     /** @use HasFactory<ClubFactory> */
     use HasFactory;
 
@@ -50,5 +53,13 @@ class Club extends Model
         return Attribute::make(
             get: fn () => $this->load('admins')->admins->contains(auth()->user()),
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    private static function getDefaultOrder(): array
+    {
+        return ['name', 'asc'];
     }
 }

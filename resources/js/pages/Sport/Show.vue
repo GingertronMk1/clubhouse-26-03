@@ -8,12 +8,12 @@ defineProps<{ sport: Sport }>();
 <template>
     <ClubhouseLayout :title="sport.name">
         <div class="flex flex-col space-y-2">
-            <h3 v-text="sport.name" />
+            <h3 class="text-xl" v-text="sport.name" />
             <p v-text="sport.description" />
             <hr class="my-2 bg-gray-700" />
-            <h4 class="text-lg">Scoring</h4>
+            <h3 class="text-xl">Scoring</h3>
             <table class="table w-60 text-left">
-                <thead>
+                <thead class="border-b border-white">
                     <tr>
                         <th>Scoring event</th>
                         <th>Points</th>

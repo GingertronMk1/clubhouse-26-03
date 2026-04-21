@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreClubRequest;
 use App\Http\Requests\UpdateClubRequest;
 use App\Models\Club;
+use Inertia\Inertia;
 
 class ClubController extends Controller
 {
@@ -18,7 +19,7 @@ class ClubController extends Controller
             ? Club::query()
             : $user->clubs();
 
-        return inertia('Club/Index', [
+        return Inertia::render('Club/Index', [
             'clubs' => $clubs->with('users')->paginate(10),
         ]);
     }

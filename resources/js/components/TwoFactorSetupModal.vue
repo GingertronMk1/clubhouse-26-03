@@ -170,6 +170,7 @@ watch(
                                     v-else
                                     class="relative z-10 overflow-hidden border p-5"
                                 >
+                                    <!-- eslint-disable vue/no-v-html -->
                                     <div
                                         class="flex aspect-square size-full items-center justify-center"
                                         :style="{
@@ -180,6 +181,7 @@ watch(
                                         }"
                                         v-html="qrCodeSvg"
                                     />
+                                    <!-- eslint-enable -->
                                 </div>
                             </div>
                         </div>
@@ -238,7 +240,7 @@ watch(
 
                 <template v-else>
                     <Form
-                        v-slot="{ errors, processing }"
+                        v-slot="{ errors: formErrors, processing }"
                         v-bind="confirm.form()"
                         error-bag="confirmTwoFactorAuthentication"
                         reset-on-error
@@ -267,7 +269,7 @@ watch(
                                         />
                                     </InputOTPGroup>
                                 </InputOTP>
-                                <InputError :message="errors?.code" />
+                                <InputError :message="formErrors?.code" />
                             </div>
 
                             <div class="flex w-full items-center space-x-5">

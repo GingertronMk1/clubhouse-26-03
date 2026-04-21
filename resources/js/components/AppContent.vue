@@ -10,6 +10,7 @@ type Props = {
 
 const props = withDefaults(defineProps<Props>(), {
     variant: 'sidebar',
+    class: '',
 });
 const className = computed(() => props.class);
 </script>
